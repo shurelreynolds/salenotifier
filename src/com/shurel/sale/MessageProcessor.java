@@ -31,10 +31,6 @@ public class MessageProcessor extends MessageUtil implements Notifier {
 	 */
 	private static List<SaleObserver> saleObservers;
 	/**
-	 * list of AdjustmentObservers
-	 */
-
-	/**
 	 * keeps track of the message count received
 	 */
 	private static int messageCounter;
@@ -351,7 +347,7 @@ public class MessageProcessor extends MessageUtil implements Notifier {
 			default:
 
 				// apple at 10p
-				// expects 10, 10p, 0.1, 0.1p,£1,£1.0,£.20,£0.10
+				// expects 10, 10p, 0.1, 0.1p,Â£1,Â£1.0,Â£.20,Â£0.10
 
 				// is valid money
 				if (isValidMoney(tokens[2])) {
@@ -461,7 +457,7 @@ public class MessageProcessor extends MessageUtil implements Notifier {
 		if (money == null)
 			return 0;
 
-		if (money.startsWith("£")) { //$NON-NLS-1$
+		if (money.startsWith("Â£")) { //$NON-NLS-1$
 
 			try {
 				return (int) (Double.parseDouble(money.substring(1)) * 100);
@@ -509,7 +505,7 @@ public class MessageProcessor extends MessageUtil implements Notifier {
 		if (money == null)
 			throw new SaleException("Invalid Money Format:");
 
-		if (money.startsWith("£")) {
+		if (money.startsWith("Â£")) {
 
 			try {
 				Double.parseDouble(money.substring(1));
